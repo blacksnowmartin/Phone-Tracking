@@ -1,0 +1,21 @@
+from twilio.rest import Client
+
+# Twilio credentials
+account_sid = 'your_account_sid'
+auth_token = 'your_auth_token'
+
+# Initialize Twilio client
+client = Client(account_sid, auth_token)
+
+# Phone number you want to track
+phone_number = 'your_phone_number'
+
+# Get information about the phone number
+number_info = client.lookups.phone_numbers(phone_number).fetch()
+
+# Print information
+print("Phone Number:", number_info.phone_number)
+print("Carrier:", number_info.carrier['name'])
+print("Country Code:", number_info.country_code)
+print("Phone Number Type:", number_info.carrier['type'])
+print("Phone Number Valid:", number_info.valid)
